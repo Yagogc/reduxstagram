@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -10,7 +11,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: ''
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
@@ -23,7 +24,12 @@ module.exports = {
       compressor: {
         warnings: false
       }
-    })
+	}),
+	new HtmlWebpackPlugin({
+		title: 'Reduxstagram',
+		template:'./index.html',
+		inject: 'body'
+	  })
   ],
   module: {
     loaders: [

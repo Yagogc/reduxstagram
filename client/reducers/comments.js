@@ -2,7 +2,7 @@
 export function comments(state = [], action) {
 	if(typeof action.postId !== 'undefined') {
 		return {
-			...state,
+			 ...state,
 			[action.postId]: postComments(state[action.postId], action)
 		}
 	}
