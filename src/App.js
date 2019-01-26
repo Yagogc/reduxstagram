@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import { Provider } from 'react-redux'
+import { Router as ReactRouter, Route } from 'react-router-dom'
+import createBrowserHistory from 'history/createBrowserHistory'
+import store from './store'
+import Main from './components/Main'
+import Single from './components/Single'
+import PhotoGrid from './components/PhotoGrid'
+
+const history = createBrowserHistory()
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+      <Provider store={store}>
+        <ReactRouter history={history}>
+          <>
+            <Route path="/" component={Main} />
+            <Route exact path="/" component={PhotoGrid} />
+            <Route exact path="/view/:postId" component={Single} />
+          </>
+        </ReactRouter>
+      </Provider>
+    )
   }
 }
 
-export default App;
+export default App
