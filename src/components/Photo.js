@@ -40,7 +40,7 @@ const Photo = props => {
             <span className="comment-count">
               <span role="img" aria-label="comment">
                 💬
-              </span>
+              </span>{' '}
               {comments[post.code] ? comments[post.code].length : 0}
             </span>
           </Link>
